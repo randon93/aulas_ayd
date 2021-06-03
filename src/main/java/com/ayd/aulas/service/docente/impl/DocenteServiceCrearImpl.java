@@ -1,4 +1,4 @@
-package com.ayd.aulas.service.aula.impl;
+package com.ayd.aulas.service.docente.impl;
 
 import com.ayd.aulas.dao.AulaDao;
 import com.ayd.aulas.dto.AulaDto;
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Objects;
 
-public class AulaServiceCrearImpl implements AulaServiceCrear {
+public class DocenteServiceCrearImpl implements AulaServiceCrear {
 
     @Autowired
     private AulaDao aulaDao;
