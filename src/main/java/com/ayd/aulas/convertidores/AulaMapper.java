@@ -1,4 +1,4 @@
-package com.ayd.aulas.fabrica;
+package com.ayd.aulas.convertidores;
 
 import com.ayd.aulas.dto.AulaDto;
 import com.ayd.aulas.entity.AulaEntity;

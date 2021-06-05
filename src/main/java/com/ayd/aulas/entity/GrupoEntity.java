@@ -19,7 +19,10 @@ public class GrupoEntity {
     @ManyToOne
     private DocenteEntity docenteEntity;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<EstudianteEntity> estudianteEntities;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<EstrategiaEntity> estrategias;
 
 }

@@ -8,5 +8,6 @@ import java.util.List;
 public class DocenteDto {
 
     private Long id;
+    private String nombre;
     private List<GrupoDto> grupoDtos;
 }

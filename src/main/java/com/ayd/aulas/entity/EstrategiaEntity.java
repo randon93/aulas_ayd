@@ -2,10 +2,9 @@ package com.ayd.aulas.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -13,7 +12,11 @@ import java.util.Date;
 public class EstrategiaEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date creacion;
     private String documento;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<GrupoEntity> grupos;
 }

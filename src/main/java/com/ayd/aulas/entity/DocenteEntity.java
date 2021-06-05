@@ -13,6 +13,6 @@ public class DocenteEntity extends UsuarioEntity{
     @Id
     private Long id;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<GrupoEntity> grupoEntities;
 }

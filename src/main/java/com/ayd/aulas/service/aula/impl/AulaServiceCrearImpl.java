@@ -4,7 +4,7 @@ import com.ayd.aulas.dao.AulaDao;
 import com.ayd.aulas.dto.AulaDto;
 import com.ayd.aulas.entity.AulaEntity;
 import com.ayd.aulas.excepcion.ExcepcionSinDatos;
-import com.ayd.aulas.fabrica.AulaMapper;
+import com.ayd.aulas.convertidores.AulaMapper;
 import com.ayd.aulas.service.aula.AulaServiceCrear;
 import org.springframework.beans.factory.annotation.Autowired;
 
