@@ -10,5 +10,5 @@ public class EstrategiaDto {
     private Long id;
     private String nombre;
     private Date creacion;
-    private String documento;
+    private String descripcion;
 }

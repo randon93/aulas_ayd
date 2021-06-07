@@ -8,11 +8,16 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "docente")
-public class DocenteEntity extends UsuarioEntity{
+public class DocenteEntity {
 
     @Id
     private Long id;
 
     @OneToMany(fetch = FetchType.LAZY)
     private List<GrupoEntity> grupoEntities;
+
+    private String nombre;
+    private String apellido;
+    private String correo;
+    private String contrasena;
 }

@@ -15,7 +15,8 @@ public class EstrategiaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date creacion;
-    private String documento;
+    private String descripcion;
+    private String nombre;
 
     @ManyToMany(fetch = FetchType.LAZY)
     private List<GrupoEntity> grupos;
