@@ -7,7 +7,11 @@ import com.ayd.aulas.entity.EstrategiaEntity;
 import com.ayd.aulas.excepcion.ExcepcionDuplicidad;
 import com.ayd.aulas.service.estrategia.EstrategiaServiceCrear;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
+@Service
 public class EstrategiaServiceCrearImpl implements EstrategiaServiceCrear {
 
     @Autowired
@@ -21,8 +25,9 @@ public class EstrategiaServiceCrearImpl implements EstrategiaServiceCrear {
     }
 
     private void existe(String nombre) {
-        EstrategiaEntity existo = estrategiaDao.findByNombre(nombre).orElseThrow(
-                () -> new ExcepcionDuplicidad("Estrategia '" + nombre + "' ya esxiste.")
-        );
+        EstrategiaEntity existo = estrategiaDao.findByNombre(nombre).orElse(null);
+        if (Objects.nonNull(existo)) {
+            throw new ExcepcionDuplicidad("Estrategia '" + nombre + "' ya esxiste.");
+        }
     }
 }

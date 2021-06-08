@@ -4,7 +4,9 @@ import com.ayd.aulas.dao.DocenteDao;
 import com.ayd.aulas.excepcion.ExcepcionSinDatos;
 import com.ayd.aulas.service.docente.DocenteServiceEliminar;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DocenteServiceEliminarImpl implements DocenteServiceEliminar {
 
     @Autowired

@@ -7,7 +7,9 @@ import com.ayd.aulas.entity.AulaEntity;
 import com.ayd.aulas.excepcion.ExcepcionSinDatos;
 import com.ayd.aulas.service.aula.AulaServiceModificar;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AulaServiceModificarImpl implements AulaServiceModificar {
 
     @Autowired

@@ -7,7 +7,9 @@ import com.ayd.aulas.excepcion.ExcepcionSinDatos;
 import com.ayd.aulas.convertidores.DocenteMapper;
 import com.ayd.aulas.service.docente.DocenteServiceConsultar;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DocenteServiceConsultarImpl implements DocenteServiceConsultar {
 
     @Autowired

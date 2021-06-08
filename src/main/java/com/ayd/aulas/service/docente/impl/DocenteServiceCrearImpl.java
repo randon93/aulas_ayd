@@ -4,12 +4,15 @@ import com.ayd.aulas.convertidores.DocenteMapper;
 import com.ayd.aulas.dao.DocenteDao;
 import com.ayd.aulas.dto.DocenteDto;
 import com.ayd.aulas.entity.DocenteEntity;
+import com.ayd.aulas.excepcion.ExcepcionDuplicidad;
 import com.ayd.aulas.excepcion.ExcepcionSinDatos;
 import com.ayd.aulas.service.docente.DocenteServiceCrear;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
+@Service
 public class DocenteServiceCrearImpl implements DocenteServiceCrear {
 
     @Autowired
@@ -23,9 +26,9 @@ public class DocenteServiceCrearImpl implements DocenteServiceCrear {
     }
 
     private void existe(String nombre) {
-        DocenteEntity docenteEntity = docenteDao.findByNombre(nombre).orElse(new DocenteEntity());
+        DocenteEntity docenteEntity = docenteDao.findByNombre(nombre).orElse(null);
         if (Objects.nonNull(docenteEntity)) {
-            throw new ExcepcionSinDatos("El docente ya existe en el sistema.");
+            throw new ExcepcionDuplicidad("El docente ya existe");
         }
     }
 }

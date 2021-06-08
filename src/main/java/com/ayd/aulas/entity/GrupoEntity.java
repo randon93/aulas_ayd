@@ -12,6 +12,7 @@ public class GrupoEntity {
 
     @Id
     private Long id;
+    private String nombre;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private AulaEntity aulaEntity;

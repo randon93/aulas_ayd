@@ -7,5 +7,9 @@ public class EstudianteDto {
 
     private Long id;
     private boolean repitente;
+    private String nombre;
+    private String apellido;
+    private String correo;
+    private String contrasena;
     private GrupoDto grupoDto;
 }

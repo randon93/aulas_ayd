@@ -6,10 +6,12 @@ import com.ayd.aulas.dto.DocenteDto;
 import com.ayd.aulas.entity.DocenteEntity;
 import com.ayd.aulas.service.docente.DocenteServiceListar;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class DocenteServiceListarImpl implements DocenteServiceListar {
 
     @Autowired
