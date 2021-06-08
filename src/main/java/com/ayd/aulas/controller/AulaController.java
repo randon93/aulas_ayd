@@ -28,7 +28,7 @@ public class AulaController {
 
     @PostMapping("/crear")
     @ResponseBody
-    public Long crear(AulaDto aulaDto){
+    public Long crear(@RequestBody AulaDto aulaDto){
         return aulaServiceCrear.ejecutar(aulaDto);
     }
 

@@ -10,7 +10,6 @@ public interface AulaMapper {
 
     AulaMapper INSTANCIA = Mappers.getMapper(AulaMapper.class);
 
-
     AulaDto aulaEnityToAulaDto(AulaEntity aulaEntity);
 
     AulaEntity aulaDtoToAulaEntity(AulaDto aulaDto);
