@@ -37,4 +37,21 @@ public class AulaController {
     public List<AulaDto> listar(){
         return aulaServiceListar.ejecutar();
     }
+
+    @GetMapping("/buscar-nombre")
+    @ResponseBody
+    public AulaDto buscarNombre(String nombre){
+        return aulaServiceConsultar.ejecutar(nombre);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public void eliminar(@PathVariable Long id){
+        aulaServiceEliminar.ejecutar(id);
+    }
+
+    @PutMapping("/actualizar")
+    @ResponseBody
+    void actualizar(@RequestBody AulaDto aulaDto){
+        aulaServiceModificar.ejecutar(aulaDto);
+    }
 }
