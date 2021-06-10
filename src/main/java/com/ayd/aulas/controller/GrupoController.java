@@ -2,6 +2,7 @@ package com.ayd.aulas.controller;
 
 import com.ayd.aulas.dto.GrupoDto;
 import com.ayd.aulas.service.grupo.GrupoServiceActualizar;
+import com.ayd.aulas.service.grupo.GrupoServiceCrear;
 import com.ayd.aulas.service.grupo.GrupoServiceEliminar;
 import com.ayd.aulas.service.grupo.GrupoServiceListar;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,15 @@ public class GrupoController {
     @PutMapping("/actualizar")
     public void actualizar(@RequestBody GrupoDto grupoDto) {
         grupoServiceActualizar.ejecutar(grupoDto);
+    }
+
+    @Autowired
+    private GrupoServiceCrear grupoServiceCrear;
+
+    @PostMapping("/crear")
+    @ResponseBody
+    public Long crear(@RequestBody GrupoDto grupoDto){
+        return grupoServiceCrear.ejecutar(grupoDto);
     }
 
 

@@ -8,5 +8,5 @@ import java.util.List;
 public class AulaDto {
     private Long id;
     private String nombre;
-    private List<GrupoDto> grupoDtoList;
+    private List<GrupoDto> grupos;
 }

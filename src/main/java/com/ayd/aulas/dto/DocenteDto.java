@@ -12,5 +12,5 @@ public class DocenteDto {
     private String apellido;
     private String correo;
     private String contrasena;
-    private List<GrupoDto> grupoDtos;
+    private List<GrupoDto> grupos;
 }

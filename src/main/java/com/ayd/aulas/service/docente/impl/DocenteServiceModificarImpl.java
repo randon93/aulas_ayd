@@ -1,7 +1,9 @@
 package com.ayd.aulas.service.docente.impl;
 
+import com.ayd.aulas.convertidores.DocenteMapper;
 import com.ayd.aulas.dao.DocenteDao;
 import com.ayd.aulas.dto.DocenteDto;
+import com.ayd.aulas.entity.DocenteEntity;
 import com.ayd.aulas.excepcion.ExcepcionSinDatos;
 import com.ayd.aulas.service.docente.DocenteServiceModificar;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +17,8 @@ public class DocenteServiceModificarImpl implements DocenteServiceModificar {
 
     @Override
     public void ejecutar(DocenteDto docenteDto) {
-        existe(docenteDto.getId());
-        docenteDao.deleteById(docenteDto.getId());
+        DocenteEntity docenteEntity = DocenteMapper.INSTANCIA.aulaDtoToAulaEntity(docenteDto);
+        docenteDao.save(docenteEntity);
     }
 
     private void existe(Long id) {

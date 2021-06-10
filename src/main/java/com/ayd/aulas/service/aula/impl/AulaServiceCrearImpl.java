@@ -25,7 +25,7 @@ public class AulaServiceCrearImpl implements AulaServiceCrear {
     }
 
     private void existe(String nombre){
-       AulaEntity aulaEntity =  aulaDao.findByNombre(nombre).orElse(new AulaEntity());
+       AulaEntity aulaEntity =  aulaDao.findByNombre(nombre).orElse(null);
        if (Objects.nonNull(aulaEntity)) {
             throw new ExcepcionSinDatos("El aula ya esta creada.");
        }

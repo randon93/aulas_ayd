@@ -11,5 +11,5 @@ public class EstudianteDto {
     private String apellido;
     private String correo;
     private String contrasena;
-    private GrupoDto grupoDto;
+    private GrupoDto grupos;
 }

@@ -11,6 +11,7 @@ import java.util.List;
 public class DocenteEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private String apellido;
@@ -18,6 +19,6 @@ public class DocenteEntity {
     private String contrasena;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<GrupoEntity> grupoEntities;
+    private List<GrupoEntity> grupos;
 
 }

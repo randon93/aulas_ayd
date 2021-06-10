@@ -11,17 +11,18 @@ import java.util.List;
 public class GrupoEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private AulaEntity aulaEntity;
+    @ManyToOne()
+    private AulaEntity aulaId;
 
     @ManyToOne
-    private DocenteEntity docenteEntity;
+    private DocenteEntity docente;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<EstudianteEntity> estudianteEntities;
+    private List<EstudianteEntity> estudiantes;
 
     @ManyToMany(fetch = FetchType.LAZY)
     private List<EstrategiaEntity> estrategias;
