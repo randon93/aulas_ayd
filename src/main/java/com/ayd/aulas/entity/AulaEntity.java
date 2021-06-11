@@ -17,7 +17,8 @@ public class AulaEntity {
     private Long id;
     private String nombre;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private List<GrupoEntity> grupos;
 
 }

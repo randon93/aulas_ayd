@@ -18,6 +18,7 @@ public class EstrategiaEntity {
     private String descripcion;
     private String nombre;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private List<GrupoEntity> grupos;
 }

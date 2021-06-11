@@ -1,5 +1,6 @@
 package com.ayd.aulas.service.grupo.impl;
 
+import com.ayd.aulas.convertidores.GrupoMapper;
 import com.ayd.aulas.dao.GrupoDao;
 import com.ayd.aulas.dto.GrupoDto;
 import com.ayd.aulas.entity.GrupoEntity;
@@ -18,15 +19,15 @@ public class GrupoServiceActualizarImpl implements GrupoServiceActualizar {
 
     @Override
     public void ejecutar(GrupoDto grupoDto) {
-       GrupoEntity grupoEntity = existo(grupoDto.getId());
-       grupoDao.save(grupoEntity);
+        existo(grupoDto.getId());
+        GrupoEntity grupoEntity = GrupoMapper.INSTANCIA.grupoDtoToGrupoEntity(grupoDto);
+        grupoDao.save(grupoEntity);
     }
 
-    private GrupoEntity existo(Long id) {
+    private void existo(Long id) {
         GrupoEntity grupoEntity = grupoDao.findById(id).orElse(null);
         if (Objects.isNull(grupoEntity)) {
             throw new ExcepcionSinDatos("No existe el grupo que desea actualizar");
         }
-        return grupoEntity;
     }
 }

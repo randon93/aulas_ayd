@@ -16,15 +16,18 @@ public class GrupoEntity {
     private String nombre;
 
     @ManyToOne()
-    private AulaEntity aulaId;
+    private AulaEntity aula;
 
     @ManyToOne
     private DocenteEntity docente;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private List<EstudianteEntity> estudiantes;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,
+            mappedBy = "grupos",
+            cascade = CascadeType.ALL)
     private List<EstrategiaEntity> estrategias;
 
 }
