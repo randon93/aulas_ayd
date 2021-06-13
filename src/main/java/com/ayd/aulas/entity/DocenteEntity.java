@@ -18,8 +18,11 @@ public class DocenteEntity {
     private String correo;
     private String contrasena;
 
-    @OneToMany(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @OneToMany(
+            mappedBy = "docente",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
     private List<GrupoEntity> grupos;
 
 }

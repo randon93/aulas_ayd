@@ -19,13 +19,13 @@ public class EstudianteServiceCrearImpl implements EstudianteServiceCrear {
 
     @Override
     public Long ejecutar(EstudianteDto estudianteDto) {
-        existe(estudianteDto.getId());
+        existe(estudianteDto.getNombre());
         EstudianteEntity entity = EstudianteMapper.INSTANCIA.estudianteDtoToEstudianteEntity(estudianteDto);
         return estudianteDao.save(entity).getId();
     }
 
-    private void existe(Long id){
-        EstudianteEntity estudianteEntity = estudianteDao.findById(id).orElse(null);
+    private void existe(String nombre){
+        EstudianteEntity estudianteEntity = estudianteDao.findByNombre(nombre).orElse(null);
         if (Objects.nonNull(estudianteEntity)) {
             throw new ExcepcionDuplicidad("El estudiante ya existe");
         }

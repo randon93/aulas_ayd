@@ -19,6 +19,7 @@ public class EstrategiaEntity {
     private String nombre;
 
     @ManyToMany(fetch = FetchType.LAZY,
+            mappedBy = "estrategias",
             cascade = CascadeType.ALL)
     private List<GrupoEntity> grupos;
 }

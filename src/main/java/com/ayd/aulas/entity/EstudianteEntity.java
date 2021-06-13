@@ -3,6 +3,7 @@ package com.ayd.aulas.entity;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -20,6 +21,7 @@ public class EstudianteEntity {
     private String correo;
     private String contrasena;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
     private GrupoEntity grupos;
 }

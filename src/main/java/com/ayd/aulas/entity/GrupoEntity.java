@@ -1,6 +1,7 @@
 package com.ayd.aulas.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,18 +16,22 @@ public class GrupoEntity {
     private Long id;
     private String nombre;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
     private AulaEntity aula;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
     private DocenteEntity docente;
 
-    @OneToMany(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @OneToMany(
+            mappedBy = "grupos",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
     private List<EstudianteEntity> estudiantes;
 
     @ManyToMany(fetch = FetchType.LAZY,
-            mappedBy = "grupos",
             cascade = CascadeType.ALL)
     private List<EstrategiaEntity> estrategias;
 
