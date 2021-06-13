@@ -32,6 +32,7 @@ public class GrupoEntity {
     private List<EstudianteEntity> estudiantes;
 
     @ManyToMany(fetch = FetchType.LAZY,
+            mappedBy = "grupos",
             cascade = CascadeType.ALL)
     private List<EstrategiaEntity> estrategias;
 

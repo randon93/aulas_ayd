@@ -3,6 +3,7 @@ package com.ayd.aulas.dto;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class EstrategiaDto {
@@ -11,4 +12,5 @@ public class EstrategiaDto {
     private String nombre;
     private Date creacion;
     private String descripcion;
+    private List<GrupoDto> grupos;
 }
