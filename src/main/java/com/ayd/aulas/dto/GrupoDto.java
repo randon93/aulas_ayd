@@ -1,6 +1,5 @@
 package com.ayd.aulas.dto;
 
-import com.ayd.aulas.entity.EstrategiaEntity;
 import lombok.Data;
 
 import java.util.List;

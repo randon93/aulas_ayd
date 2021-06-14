@@ -1,8 +1,8 @@
 package com.ayd.aulas.service.grupo.impl;
 
-import com.ayd.aulas.convertidores.GrupoMapper;
+import com.ayd.aulas.convertidores.GrupoEntityToGrupoResponseDto;
 import com.ayd.aulas.dao.GrupoDao;
-import com.ayd.aulas.dto.GrupoDto;
+import com.ayd.aulas.dto.GrupoResponseDto;
 import com.ayd.aulas.entity.GrupoEntity;
 import com.ayd.aulas.service.grupo.GrupoServiceListar;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +17,13 @@ public class GrupoServiceListarImpl implements GrupoServiceListar {
     @Autowired
     private GrupoDao grupoDao;
 
+
     @Override
-    public List<GrupoDto> ejecutar() {
-        List<GrupoDto> grupoDtos = new ArrayList<>();
+    public List<GrupoResponseDto> ejecutar() {
+        List<GrupoResponseDto> grupoDtos = new ArrayList<>();
         for (GrupoEntity grupoEntity : grupoDao.findAll()) {
             grupoDtos.add(
-                    GrupoMapper.INSTANCIA.grupoEntityToGrupoDto(grupoEntity)
+                    GrupoEntityToGrupoResponseDto.entityToDto(grupoEntity)
             );
         }
         return grupoDtos;

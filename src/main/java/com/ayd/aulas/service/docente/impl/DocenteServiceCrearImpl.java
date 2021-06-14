@@ -40,12 +40,13 @@ public class DocenteServiceCrearImpl implements DocenteServiceCrear {
     }
 
     private void existeGrupo(List<GrupoDto> dtos) {
-        for (int i = 0; i < dtos.size(); i++) {
-            GrupoDto dto = dtos.get(i);
-            grupoDao.findById(dto.getId()).orElseThrow(
-                    () -> new ExcepcionSinDatos("El grupo '" + dto.getNombre() + "'No existe.")
-            );
-
+        if (Objects.nonNull(dtos)){
+            for (int i = 0; i < dtos.size(); i++) {
+                GrupoDto dto = dtos.get(i);
+                grupoDao.findById(dto.getId()).orElseThrow(
+                        () -> new ExcepcionSinDatos("El grupo '" + dto.getNombre() + "'No existe.")
+                );
+            }
         }
     }
 }

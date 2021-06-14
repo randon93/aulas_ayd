@@ -1,8 +1,6 @@
 package com.ayd.aulas.entity;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -21,7 +19,8 @@ public class EstudianteEntity {
     private String correo;
     private String contrasena;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     @ToString.Exclude
     private GrupoEntity grupos;
 }

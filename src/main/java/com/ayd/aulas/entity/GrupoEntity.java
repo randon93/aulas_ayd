@@ -25,15 +25,20 @@ public class GrupoEntity {
     private DocenteEntity docente;
 
     @OneToMany(
-            mappedBy = "grupos",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
     private List<EstudianteEntity> estudiantes;
 
     @ManyToMany(fetch = FetchType.LAZY,
-            mappedBy = "grupos",
             cascade = CascadeType.ALL)
+    @JoinTable(name = "grupo_estrategia",
+            joinColumns = { @JoinColumn(name = "grupo_id")},
+            inverseJoinColumns = { @JoinColumn (name = "estrategia_id")})
     private List<EstrategiaEntity> estrategias;
 
+    @Override
+    public String toString() {
+        return "GrupoEntity{}";
+    }
 }

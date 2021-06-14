@@ -1,6 +1,7 @@
 package com.ayd.aulas.controller;
 
 import com.ayd.aulas.dto.GrupoDto;
+import com.ayd.aulas.dto.GrupoResponseDto;
 import com.ayd.aulas.service.grupo.GrupoServiceActualizar;
 import com.ayd.aulas.service.grupo.GrupoServiceCrear;
 import com.ayd.aulas.service.grupo.GrupoServiceEliminar;
@@ -19,7 +20,7 @@ public class GrupoController {
 
     @GetMapping("/listar")
     @ResponseBody
-    public List<GrupoDto> listar() {
+    public List<GrupoResponseDto> listar() {
         return grupoServiceListar.ejecutar();
     }
 
@@ -44,7 +45,7 @@ public class GrupoController {
 
     @PostMapping("/crear")
     @ResponseBody
-    public Long crear(@RequestBody GrupoDto grupoDto){
+    public Long crear(@RequestBody GrupoDto grupoDto) {
         return grupoServiceCrear.ejecutar(grupoDto);
     }
 
