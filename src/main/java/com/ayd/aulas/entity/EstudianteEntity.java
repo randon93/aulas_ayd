@@ -19,8 +19,7 @@ public class EstudianteEntity {
     private String correo;
     private String contrasena;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @ToString.Exclude
     private GrupoEntity grupos;
 }
