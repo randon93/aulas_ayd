@@ -1,8 +1,8 @@
 package com.ayd.aulas.service.docente;
 
-import com.ayd.aulas.dto.DocenteDto;
+import com.ayd.aulas.dto.DocenteResponseDto;
 
 public interface DocenteServiceBuscarNombre {
 
-    DocenteDto ejecutar(String nombre);
+    DocenteResponseDto ejecutar(String nombre);
 }

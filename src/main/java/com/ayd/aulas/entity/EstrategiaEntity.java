@@ -19,7 +19,9 @@ public class EstrategiaEntity {
     private String nombre;
 
     @ManyToMany(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "estrategias")
+            cascade = CascadeType.ALL)
+    @JoinTable(name = "grupo_estrategia",
+            joinColumns = {@JoinColumn(name = "grupo_id")},
+            inverseJoinColumns = {@JoinColumn(name = "estrategia_id")})
     private List<GrupoEntity> grupos;
 }

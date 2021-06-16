@@ -1,8 +1,9 @@
 package com.ayd.aulas.service.estudiante;
 
 import com.ayd.aulas.dto.EstudianteDto;
+import com.ayd.aulas.dto.EstudianteResponseDto;
 
 public interface EstudianteServiceCrear {
 
-    Long ejecutar(EstudianteDto estudianteDto);
+    Long ejecutar(EstudianteResponseDto estudianteDto);
 }

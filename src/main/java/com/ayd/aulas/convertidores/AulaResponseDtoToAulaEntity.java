@@ -8,6 +8,8 @@ import com.ayd.aulas.excepcion.ExcepcionSinDatos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Component
 public class AulaResponseDtoToAulaEntity {
 
@@ -16,14 +18,18 @@ public class AulaResponseDtoToAulaEntity {
 
     public AulaEntity dtoResponseToEntity(AulaResponseDto dto) {
         AulaEntity entity = new AulaEntity();
+        entity.setGrupos(new ArrayList<>());
+        entity.setGrupos(new ArrayList<>());
         entity.setId(dto.getId());
         entity.setNombre(dto.getNombre());
         dto.getGrupos().forEach(
                 idGrupo -> {
-                    GrupoEntity entityG = this.grupoDao.findById(idGrupo).orElseThrow(
-                            () -> new ExcepcionSinDatos("EL grupo '" + idGrupo + "' no existe.")
-                    );
-                    entity.getGrupos().add(entityG);
+                    if (idGrupo > 0) {
+                        GrupoEntity entityG = this.grupoDao.findById(idGrupo).orElseThrow(
+                                () -> new ExcepcionSinDatos("EL grupo '" + idGrupo + "' no existe.")
+                        );
+                        entity.getGrupos().add(entityG);
+                    }
                 }
         );
         return entity;

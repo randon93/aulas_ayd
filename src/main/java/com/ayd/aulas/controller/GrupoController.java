@@ -36,7 +36,7 @@ public class GrupoController {
     private GrupoServiceActualizar grupoServiceActualizar;
 
     @PutMapping("/actualizar")
-    public void actualizar(@RequestBody GrupoDto grupoDto) {
+    public void actualizar(@RequestBody GrupoResponseDto grupoDto) {
         grupoServiceActualizar.ejecutar(grupoDto);
     }
 
@@ -45,7 +45,7 @@ public class GrupoController {
 
     @PostMapping("/crear")
     @ResponseBody
-    public Long crear(@RequestBody GrupoDto grupoDto) {
+    public Long crear(@RequestBody GrupoResponseDto grupoDto) {
         return grupoServiceCrear.ejecutar(grupoDto);
     }
 

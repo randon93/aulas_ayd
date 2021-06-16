@@ -1,24 +1,27 @@
 package com.ayd.aulas.service.aula.impl;
 
+import com.ayd.aulas.convertidores.AulaEntityToAulaResponseDto;
 import com.ayd.aulas.dao.AulaDao;
-import com.ayd.aulas.dto.AulaDto;
+import com.ayd.aulas.dto.AulaResponseDto;
 import com.ayd.aulas.entity.AulaEntity;
 import com.ayd.aulas.excepcion.ExcepcionSinDatos;
-import com.ayd.aulas.convertidores.AulaMapper;
 import com.ayd.aulas.service.aula.AulaServiceConsultar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AulaServiceConsultarImpl  implements AulaServiceConsultar {
+public class AulaServiceConsultarImpl implements AulaServiceConsultar {
 
     @Autowired
     private AulaDao aulaDao;
 
-    public AulaDto ejecutar(String nombre) {
+    @Autowired
+    private AulaEntityToAulaResponseDto toAulaResponseDto;
+
+    public AulaResponseDto ejecutar(String nombre) {
         AulaEntity aulaEntity = aulaDao.findByNombre(nombre).orElseThrow(
                 () -> new ExcepcionSinDatos("El aula" + nombre + "no existe")
         );
-        return AulaMapper.INSTANCIA.aulaEnityToAulaDto(aulaEntity);
+        return toAulaResponseDto.entityToResponseDto(aulaEntity);
     }
 }

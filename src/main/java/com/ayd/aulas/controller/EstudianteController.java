@@ -1,6 +1,7 @@
 package com.ayd.aulas.controller;
 
 import com.ayd.aulas.dto.EstudianteDto;
+import com.ayd.aulas.dto.EstudianteResponseDto;
 import com.ayd.aulas.service.estudiante.*;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,25 +30,25 @@ public class EstudianteController {
 
     @GetMapping("/listar")
     @ResponseBody
-    public List<EstudianteDto> listar(){
+    public List<EstudianteResponseDto> listar(){
         return estudianteServiceListar.ejecutar();
     }
 
     @GetMapping("/buscar-nombre")
     @ResponseBody
-    public EstudianteDto buscarNombre(String nombre){
+    public EstudianteResponseDto buscarNombre(String nombre){
         return estudianteServiceBuscarNombre.ejecutar(nombre);
     }
 
     @PostMapping("/crear")
     @ResponseBody
-    public Long crear(@RequestBody EstudianteDto estudianteDto){
+    public Long crear(@RequestBody EstudianteResponseDto estudianteDto){
         return estudianteServiceCrear.ejecutar(estudianteDto);
     }
 
     @PostMapping("/actualizar")
     @ResponseBody
-    public void actualizar(@RequestBody EstudianteDto estudianteDto){
+    public void actualizar(@RequestBody EstudianteResponseDto estudianteDto){
         estudianteServiceActualizar.ejecutar(estudianteDto);
     }
 }

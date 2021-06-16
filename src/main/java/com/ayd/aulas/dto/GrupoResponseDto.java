@@ -12,6 +12,6 @@ public class GrupoResponseDto {
     private String nombre;
     private Long aula;
     private Long docente;
-    private List<Long> estudiantes;
+    private Long estudiantes;
     private List<Long> estrategias;
 }

@@ -1,8 +1,6 @@
-package com.ayd.aulas.convertidores;
+package com.ayd.aulas.convertidores.mappers;
 
-import com.ayd.aulas.dto.EstrategiaDto;
 import com.ayd.aulas.dto.EstudianteDto;
-import com.ayd.aulas.entity.EstrategiaEntity;
 import com.ayd.aulas.entity.EstudianteEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

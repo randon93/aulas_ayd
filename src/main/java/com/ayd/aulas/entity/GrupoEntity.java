@@ -16,7 +16,8 @@ public class GrupoEntity {
     private Long id;
     private String nombre;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     @ToString.Exclude
     private AulaEntity aula;
 
@@ -24,17 +25,16 @@ public class GrupoEntity {
     @ToString.Exclude
     private DocenteEntity docente;
 
-    @OneToMany(
+    @ManyToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
-    private List<EstudianteEntity> estudiantes;
+    @ToString.Exclude
+    private EstudianteEntity estudiantes;
 
     @ManyToMany(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    @JoinTable(name = "grupo_estrategia",
-            joinColumns = { @JoinColumn(name = "grupo_id")},
-            inverseJoinColumns = { @JoinColumn (name = "estrategia_id")})
+            cascade = CascadeType.ALL,
+            mappedBy = "grupos")
     private List<EstrategiaEntity> estrategias;
 
     @Override

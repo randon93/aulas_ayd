@@ -1,4 +1,4 @@
-package com.ayd.aulas.convertidores;
+package com.ayd.aulas.convertidores.mappers;
 
 import com.ayd.aulas.dto.AulaDto;
 import com.ayd.aulas.entity.AulaEntity;

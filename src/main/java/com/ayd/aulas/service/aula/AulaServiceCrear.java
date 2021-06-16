@@ -1,9 +1,8 @@
 package com.ayd.aulas.service.aula;
 
-import com.ayd.aulas.dto.AulaDto;
-import com.ayd.aulas.entity.AulaEntity;
+import com.ayd.aulas.dto.AulaResponseDto;
 
 public interface AulaServiceCrear {
 
-    Long ejecutar(AulaDto aulaEntity);
+    Long ejecutar(AulaResponseDto aulaEntity);
 }

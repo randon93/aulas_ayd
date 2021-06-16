@@ -1,9 +1,11 @@
 package com.ayd.aulas.service.docente.impl;
 
-import com.ayd.aulas.convertidores.DocenteMapper;
+import com.ayd.aulas.convertidores.DocenteResponseDtoToDocenteEntity;
+import com.ayd.aulas.convertidores.mappers.DocenteMapper;
 import com.ayd.aulas.dao.DocenteDao;
 import com.ayd.aulas.dao.GrupoDao;
 import com.ayd.aulas.dto.DocenteDto;
+import com.ayd.aulas.dto.DocenteResponseDto;
 import com.ayd.aulas.dto.GrupoDto;
 import com.ayd.aulas.entity.DocenteEntity;
 import com.ayd.aulas.excepcion.ExcepcionDuplicidad;
@@ -24,11 +26,13 @@ public class DocenteServiceCrearImpl implements DocenteServiceCrear {
     @Autowired
     private GrupoDao grupoDao;
 
+    @Autowired
+    private DocenteResponseDtoToDocenteEntity toDocenteEntity;
+
     @Override
-    public Long ejecutar(DocenteDto docenteDto) {
+    public Long ejecutar(DocenteResponseDto docenteDto) {
         existe(docenteDto.getNombre());
-        existeGrupo(docenteDto.getGrupos());
-        DocenteEntity aulaEntity = DocenteMapper.INSTANCIA.aulaDtoToAulaEntity(docenteDto);
+        DocenteEntity aulaEntity = toDocenteEntity.repsonseDtoToEntity(docenteDto);
         return docenteDao.save(aulaEntity).getId();
     }
 
@@ -36,17 +40,6 @@ public class DocenteServiceCrearImpl implements DocenteServiceCrear {
         DocenteEntity docenteEntity = docenteDao.findByNombre(nombre).orElse(null);
         if (Objects.nonNull(docenteEntity)) {
             throw new ExcepcionDuplicidad("El docente ya existe");
-        }
-    }
-
-    private void existeGrupo(List<GrupoDto> dtos) {
-        if (Objects.nonNull(dtos)){
-            for (int i = 0; i < dtos.size(); i++) {
-                GrupoDto dto = dtos.get(i);
-                grupoDao.findById(dto.getId()).orElseThrow(
-                        () -> new ExcepcionSinDatos("El grupo '" + dto.getNombre() + "'No existe.")
-                );
-            }
         }
     }
 }

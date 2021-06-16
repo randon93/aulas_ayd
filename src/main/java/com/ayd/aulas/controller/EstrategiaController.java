@@ -1,6 +1,6 @@
 package com.ayd.aulas.controller;
 
-import com.ayd.aulas.dto.EstrategiaDto;
+import com.ayd.aulas.dto.EstrategiaResponseDto;
 import com.ayd.aulas.service.estrategia.EstrategiaServiceBuscarNombre;
 import com.ayd.aulas.service.estrategia.EstrategiaServiceCrear;
 import com.ayd.aulas.service.estrategia.EstrategiaServiceListar;
@@ -19,7 +19,7 @@ public class EstrategiaController {
 
     @PostMapping("crear")
     @ResponseBody
-    public Long crear(@RequestBody EstrategiaDto estrategiaDto) {
+    public Long crear(@RequestBody EstrategiaResponseDto estrategiaDto) {
         return estrategiaServiceCrear.ejecutar(estrategiaDto);
     }
 
@@ -27,7 +27,7 @@ public class EstrategiaController {
     private EstrategiaServiceBuscarNombre estrategiaServiceBuscarNombre;
 
     @GetMapping("/buscar-nombre/{nombre}")
-    public EstrategiaDto buscarNombre(@PathVariable String nombre) {
+    public EstrategiaResponseDto buscarNombre(@PathVariable String nombre) {
         return estrategiaServiceBuscarNombre.ejecutar(nombre);
     }
 
@@ -35,8 +35,8 @@ public class EstrategiaController {
     private EstrategiaServiceListar estrategiaServiceListar;
 
     @GetMapping("/listar")
-    public List<EstrategiaDto> listar() {
-       return estrategiaServiceListar.ejecutar();
+    public List<EstrategiaResponseDto> listar() {
+        return estrategiaServiceListar.ejecutar();
     }
 
     @Autowired

@@ -1,9 +1,12 @@
 package com.ayd.aulas.service.docente.impl;
 
-import com.ayd.aulas.convertidores.DocenteMapper;
+import com.ayd.aulas.convertidores.DocenteEntityToDocenteResponseDto;
+import com.ayd.aulas.convertidores.DocenteResponseDtoToDocenteEntity;
+import com.ayd.aulas.convertidores.mappers.DocenteMapper;
 import com.ayd.aulas.dao.DocenteDao;
 import com.ayd.aulas.dao.GrupoDao;
 import com.ayd.aulas.dto.DocenteDto;
+import com.ayd.aulas.dto.DocenteResponseDto;
 import com.ayd.aulas.dto.GrupoDto;
 import com.ayd.aulas.entity.DocenteEntity;
 import com.ayd.aulas.excepcion.ExcepcionSinDatos;
@@ -22,11 +25,13 @@ public class DocenteServiceModificarImpl implements DocenteServiceModificar {
     @Autowired
     private GrupoDao grupoDao;
 
+    @Autowired
+    private DocenteResponseDtoToDocenteEntity toDocenteEntity;
+
     @Override
-    public void ejecutar(DocenteDto docenteDto) {
+    public void ejecutar(DocenteResponseDto docenteDto) {
         existe(docenteDto.getId());
-        existeGrupo(docenteDto.getGrupos());
-        DocenteEntity docenteEntity = DocenteMapper.INSTANCIA.aulaDtoToAulaEntity(docenteDto);
+        DocenteEntity docenteEntity = toDocenteEntity.repsonseDtoToEntity(docenteDto);
         docenteDao.save(docenteEntity);
     }
 
@@ -36,13 +41,6 @@ public class DocenteServiceModificarImpl implements DocenteServiceModificar {
         );
     }
 
-    private void existeGrupo(List<GrupoDto> dtos) {
-        for (int i = 0; i < dtos.size(); i++) {
-            GrupoDto dto = dtos.get(i);
-            grupoDao.findById(dto.getId()).orElseThrow(
-                    () -> new ExcepcionSinDatos("El grupo '" + dto.getNombre() + "'No existe.")
-            );
-        }
-    }
+
     
 }

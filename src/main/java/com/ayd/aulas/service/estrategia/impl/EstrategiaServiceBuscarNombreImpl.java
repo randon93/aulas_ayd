@@ -1,10 +1,11 @@
 package com.ayd.aulas.service.estrategia.impl;
 
-import com.ayd.aulas.convertidores.EstrategiaMapper;
+import com.ayd.aulas.convertidores.EstrategiaEntityToEstrategiaResponseDto;
+import com.ayd.aulas.convertidores.mappers.EstrategiaMapper;
 import com.ayd.aulas.dao.EstrategiaDao;
 import com.ayd.aulas.dto.EstrategiaDto;
+import com.ayd.aulas.dto.EstrategiaResponseDto;
 import com.ayd.aulas.entity.EstrategiaEntity;
-import com.ayd.aulas.entity.EstudianteEntity;
 import com.ayd.aulas.excepcion.ExcepcionSinDatos;
 import com.ayd.aulas.service.estrategia.EstrategiaServiceBuscarNombre;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,13 @@ public class EstrategiaServiceBuscarNombreImpl implements EstrategiaServiceBusca
     @Autowired
     private EstrategiaDao estrategiaDao;
 
+    @Autowired
+    private EstrategiaEntityToEstrategiaResponseDto toEstrategiaResponseDto;
+
     @Override
-    public EstrategiaDto ejecutar(String nombre) {
+    public EstrategiaResponseDto ejecutar(String nombre) {
         EstrategiaEntity entity = existo(nombre);
-        EstrategiaDto estrategiaDto = EstrategiaMapper.INSTANCIA.estrategiaEntityToEstrategiaDto(entity);
+        EstrategiaResponseDto estrategiaDto = toEstrategiaResponseDto.entityToResonse(entity);
         return estrategiaDto;
     }
 

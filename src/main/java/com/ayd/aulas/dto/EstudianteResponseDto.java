@@ -2,6 +2,8 @@ package com.ayd.aulas.dto;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class EstudianteResponseDto {
 
@@ -11,5 +13,5 @@ public class EstudianteResponseDto {
     private String apellido;
     private String correo;
     private String contrasena;
-    private Long grupos;
+    private List<Long> grupos;
 }

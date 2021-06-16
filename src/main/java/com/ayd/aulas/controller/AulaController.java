@@ -1,6 +1,7 @@
 package com.ayd.aulas.controller;
 
 import com.ayd.aulas.dto.AulaDto;
+import com.ayd.aulas.dto.AulaResponseDto;
 import com.ayd.aulas.service.aula.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,30 +29,30 @@ public class AulaController {
 
     @PostMapping("/crear")
     @ResponseBody
-    public Long crear(@RequestBody AulaDto aulaDto){
+    public Long crear(@RequestBody AulaResponseDto aulaDto) {
         return aulaServiceCrear.ejecutar(aulaDto);
     }
 
     @GetMapping("/listar")
     @ResponseBody
-    public List<AulaDto> listar(){
+    public List<AulaResponseDto> listar() {
         return aulaServiceListar.ejecutar();
     }
 
     @GetMapping("/buscar-nombre")
     @ResponseBody
-    public AulaDto buscarNombre(String nombre){
+    public AulaResponseDto buscarNombre(String nombre) {
         return aulaServiceConsultar.ejecutar(nombre);
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public void eliminar(@PathVariable Long id){
+    public void eliminar(@PathVariable Long id) {
         aulaServiceEliminar.ejecutar(id);
     }
 
     @PutMapping("/actualizar")
     @ResponseBody
-    void actualizar(@RequestBody AulaDto aulaDto){
+    void actualizar(@RequestBody AulaResponseDto aulaDto) {
         aulaServiceModificar.ejecutar(aulaDto);
     }
 }

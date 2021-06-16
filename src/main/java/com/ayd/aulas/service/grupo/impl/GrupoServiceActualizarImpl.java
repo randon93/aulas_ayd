@@ -1,8 +1,10 @@
 package com.ayd.aulas.service.grupo.impl;
 
-import com.ayd.aulas.convertidores.GrupoMapper;
+import com.ayd.aulas.convertidores.GrupoResponseDtoToGrupoEntity;
+import com.ayd.aulas.convertidores.mappers.GrupoMapper;
 import com.ayd.aulas.dao.GrupoDao;
 import com.ayd.aulas.dto.GrupoDto;
+import com.ayd.aulas.dto.GrupoResponseDto;
 import com.ayd.aulas.entity.GrupoEntity;
 import com.ayd.aulas.excepcion.ExcepcionSinDatos;
 import com.ayd.aulas.service.grupo.GrupoServiceActualizar;
@@ -17,10 +19,13 @@ public class GrupoServiceActualizarImpl implements GrupoServiceActualizar {
     @Autowired
     private GrupoDao grupoDao;
 
+    @Autowired
+    private GrupoResponseDtoToGrupoEntity toGrupoEntity;
+
     @Override
-    public void ejecutar(GrupoDto grupoDto) {
+    public void ejecutar(GrupoResponseDto grupoDto) {
         existo(grupoDto.getId());
-        GrupoEntity grupoEntity = GrupoMapper.INSTANCIA.grupoDtoToGrupoEntity(grupoDto);
+        GrupoEntity grupoEntity = toGrupoEntity.responseToEntoty(grupoDto);
         grupoDao.save(grupoEntity);
     }
 

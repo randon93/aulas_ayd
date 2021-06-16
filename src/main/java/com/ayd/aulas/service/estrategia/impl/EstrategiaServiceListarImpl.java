@@ -1,8 +1,8 @@
 package com.ayd.aulas.service.estrategia.impl;
 
-import com.ayd.aulas.convertidores.EstrategiaMapper;
+import com.ayd.aulas.convertidores.EstrategiaEntityToEstrategiaResponseDto;
 import com.ayd.aulas.dao.EstrategiaDao;
-import com.ayd.aulas.dto.EstrategiaDto;
+import com.ayd.aulas.dto.EstrategiaResponseDto;
 import com.ayd.aulas.entity.EstrategiaEntity;
 import com.ayd.aulas.service.estrategia.EstrategiaServiceListar;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +17,15 @@ public class EstrategiaServiceListarImpl implements EstrategiaServiceListar {
     @Autowired
     private EstrategiaDao estrategiaDao;
 
+    @Autowired
+    private EstrategiaEntityToEstrategiaResponseDto toEstrategiaResponseDto;
+
     @Override
-    public List<EstrategiaDto> ejecutar() {
-        List<EstrategiaDto> list = new ArrayList<>();
-        for (EstrategiaEntity entity: estrategiaDao.findAll()) {
+    public List<EstrategiaResponseDto> ejecutar() {
+        List<EstrategiaResponseDto> list = new ArrayList<>();
+        for (EstrategiaEntity entity : estrategiaDao.findAll()) {
             list.add(
-                    EstrategiaMapper.INSTANCIA.estrategiaEntityToEstrategiaDto(entity)
+                    toEstrategiaResponseDto.entityToResonse(entity)
             );
         }
         return list;

@@ -8,6 +8,8 @@ import com.ayd.aulas.excepcion.ExcepcionSinDatos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Component
 public class EstrategiaResponseToEstrategiaEntity {
 
@@ -16,16 +18,19 @@ public class EstrategiaResponseToEstrategiaEntity {
 
     public EstrategiaEntity responseToEntity(EstrategiaResponseDto responseDto) {
         EstrategiaEntity entity = new EstrategiaEntity();
+        entity.setGrupos(new ArrayList<>());
         entity.setCreacion(responseDto.getCreacion());
         entity.setDescripcion(responseDto.getDescripcion());
         entity.setId(responseDto.getId());
         entity.setNombre(responseDto.getNombre());
         responseDto.getGrupos().forEach(
                 idGrupo -> {
-                    GrupoEntity grupoEntity = grupoDao.findById(idGrupo).orElseThrow(
-                            () -> new ExcepcionSinDatos("No se encontro el grupo ´" + idGrupo + "'.")
-                    );
-                    entity.getGrupos().add(grupoEntity);
+                    if (idGrupo > 0) {
+                        GrupoEntity grupoEntity = grupoDao.findById(idGrupo).orElseThrow(
+                                () -> new ExcepcionSinDatos("No se encontro el grupo ´" + idGrupo + "'.")
+                        );
+                        entity.getGrupos().add(grupoEntity);
+                    }
                 }
         );
         return entity;

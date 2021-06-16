@@ -4,6 +4,8 @@ import com.ayd.aulas.dto.EstudianteResponseDto;
 import com.ayd.aulas.entity.EstudianteEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Component
 public class EstudianteEntityToEstudianteResponseDto {
 
@@ -16,7 +18,10 @@ public class EstudianteEntityToEstudianteResponseDto {
         responseDto.setId(estudianteEntity.getId());
         responseDto.setNombre(estudianteEntity.getNombre());
         responseDto.setRepitente(estudianteEntity.isRepitente());
-        responseDto.setGrupos(estudianteEntity.getGrupos().getId());
+        responseDto.setGrupos(new ArrayList<>());
+        estudianteEntity.getGrupos().forEach(
+                grupo -> responseDto.getGrupos().add(grupo.getId())
+        );
 
         return responseDto;
     }

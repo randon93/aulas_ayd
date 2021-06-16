@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -19,7 +20,6 @@ public class EstudianteEntity {
     private String correo;
     private String contrasena;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @ToString.Exclude
-    private GrupoEntity grupos;
+    @OneToMany(mappedBy = "estudiantes")
+    private List<GrupoEntity> grupos;
 }

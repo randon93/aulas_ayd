@@ -1,6 +1,7 @@
 package com.ayd.aulas.controller;
 
 import com.ayd.aulas.dto.DocenteDto;
+import com.ayd.aulas.dto.DocenteResponseDto;
 import com.ayd.aulas.service.docente.DocenteServiceCrear;
 import com.ayd.aulas.service.docente.DocenteServiceEliminar;
 import com.ayd.aulas.service.docente.DocenteServiceListar;
@@ -18,7 +19,7 @@ public class DocenteController {
     private DocenteServiceModificar docenteServiceModificar;
 
     @PutMapping("/actualizar")
-    public void actualizar(@RequestBody DocenteDto docenteDto){
+    public void actualizar(@RequestBody DocenteResponseDto docenteDto){
         docenteServiceModificar.ejecutar(docenteDto);
     }
 
@@ -35,7 +36,7 @@ public class DocenteController {
 
     @GetMapping("/listar-todo")
     @ResponseBody
-    public List<DocenteDto> listarTodo(){
+    public List<DocenteResponseDto> listarTodo(){
         return docenteServiceListar.ejecutar();
     }
 
@@ -44,7 +45,7 @@ public class DocenteController {
 
     @PostMapping("/crear")
     @ResponseBody
-    private Long crear(@RequestBody DocenteDto docenteDto){
+    private Long crear(@RequestBody DocenteResponseDto docenteDto){
         return docenteServiceCrear.ejecutar(docenteDto);
     }
 }
