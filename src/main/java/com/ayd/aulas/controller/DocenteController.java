@@ -2,10 +2,7 @@ package com.ayd.aulas.controller;
 
 import com.ayd.aulas.dto.DocenteDto;
 import com.ayd.aulas.dto.DocenteResponseDto;
-import com.ayd.aulas.service.docente.DocenteServiceCrear;
-import com.ayd.aulas.service.docente.DocenteServiceEliminar;
-import com.ayd.aulas.service.docente.DocenteServiceListar;
-import com.ayd.aulas.service.docente.DocenteServiceModificar;
+import com.ayd.aulas.service.docente.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,4 +45,14 @@ public class DocenteController {
     private Long crear(@RequestBody DocenteResponseDto docenteDto){
         return docenteServiceCrear.ejecutar(docenteDto);
     }
+
+    @Autowired
+    private DocenteLoginService docenteLoginService;
+
+    @PostMapping("/login")
+    @ResponseBody
+    private boolean login(@RequestBody DocenteResponseDto responseDto) {
+        return docenteLoginService.ejecutar(responseDto);
+    }
+
 }
